@@ -1,0 +1,32 @@
+.menu {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+}
+
+.menu * {
+    font-size: 1.4rem;
+}
+
+.menu ul {
+    display: none;
+    margin-top: 50px;
+
+}
+
+.menu span {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    cursor: pointer;
+}
+
+.menu li {
+    cursor: pointer;
+    padding: 10px 8px;
+    border-bottom: 1px solid var(--border);
+}
+
+.menu li:hover {
+    background-color: var(--darker-bg);
+}

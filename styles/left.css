@@ -1,0 +1,106 @@
+.left {
+    
+    max-width: 600px;
+    padding: 2vh 5vw;
+    padding-bottom: 3vh;
+    
+    padding-right: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+   
+}
+
+.left h4 {
+    text-align: center;
+    margin-bottom: 8px;
+    font-size: 1.3rem;
+}
+
+.left h4::before {
+    content: '- ';
+}
+
+.left h4::after {
+    content: ' -';
+}
+
+.left .task li::before {
+    content: '> ';
+}
+
+.left .task {
+    margin-bottom: 24px;
+
+}
+
+.left .task ul {
+    padding: 8px 0 0 6px;
+    min-height: 130px;
+}
+
+
+.left .in {
+    width: fit-content;
+}
+
+.left .out {
+
+    width: fit-content;
+}
+
+.left .io {
+
+    display: flex;
+    gap: 12px;
+    text-align: center;
+    margin-bottom: 12px;
+    flex-grow: 1;
+    
+}
+
+.left .io p {
+    margin-bottom: 6px;
+}
+
+.left .io ul {
+    padding: 12px;
+    max-height: 600px;
+    overflow: hidden;
+}
+.left .io li {
+    font-size: 1.4rem;
+    
+}
+
+.left .io .out-container {
+    height: calc(100% - 50px);
+}
+
+.left .out-container {
+    display: flex;
+    gap: 4px;
+}
+
+.left .controls {
+    display: flex;
+    gap: 24px;
+    padding-right: 6px;
+}
+
+.left .button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 4px;
+    font-size: 1.4rem;
+    cursor: pointer;
+    border: 3px solid var(--border);
+    width: 80px;
+    height: 80px;
+
+    -webkit-box-shadow: 4px 4px 0px 0px var(--darker-font);
+    -moz-box-shadow: 4px 4px 0px 0px var(--darker-font);
+    box-shadow: 4px 4px 0px 0px var(--darker-font);
+}

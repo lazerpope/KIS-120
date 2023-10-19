@@ -1,0 +1,78 @@
+.main {
+    height: 100%;
+    width: 100%;
+
+    align-self: center;
+    justify-self: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 14px;
+}
+
+/* -------------------------------------------- .in */
+.main .in {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.main .in  span{
+    font-size: 1.3rem;    
+}
+
+/* -------------------------------------------- .proc */
+.main .proc {
+   width: 70%;
+   height: 70%;
+   padding: 1px;
+   display: flex;
+}
+
+.main .proc .proc-code{
+flex-grow: 7;
+height: 100%;
+}
+
+/* -------------------------------------------- .proc status */
+.main .proc .proc-status{
+    width: fit-content;
+    margin-left: 1px;
+    height: 100%;
+   
+}
+
+.main .proc .proc-status span{
+    font-size: 18px;
+}
+
+.proc .grid-container {
+      
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);     
+    gap: 1px;      
+}
+
+.proc-status .grid-item {    
+    aspect-ratio: 1;
+    width: 100px;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 8px;
+}
+
+/* -------------------------------------------- .out */
+.main .out {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    
+}
+
+.main .out  span{
+    font-size: 1.3rem;    
+}
