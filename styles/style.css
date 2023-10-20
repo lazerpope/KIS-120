@@ -9,7 +9,9 @@
     color: var(--font);
     
     user-select: none;
-   font-size: 16px;
+   font-size: calc( var(--my-font-adaptive-size) * 1.0);
+
+  
 
     --bg: #0a0a0a; 
     --darker-bg: #292929; 
@@ -19,6 +21,10 @@
     --font: #cecece ;
     --darker-font: #8d8d8d ;
     --border-size: 1px;
+}
+
+body{
+    --my-font-adaptive-size: 1rem;
 }
 
 .container{
