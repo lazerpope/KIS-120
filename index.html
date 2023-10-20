@@ -41,17 +41,17 @@
 <body>
 
     <div class="menu">
-        <span class="material-symbols-outlined menu-icon" >
+        <span class="material-symbols-outlined menu-icon">
             menu
         </span>
         <ul class="border">
             <li id="fontChanger" onclick="swapFont()">
                 Нормальный шрифт: выкл
             </li>
-            <li >
+            <li>
                 Инструкция
             </li>
-            <li >
+            <li>
                 гг
             </li>
         </ul>
@@ -70,7 +70,7 @@
 
                 </ul>
             </div>
-            <div class="io">
+            <div class="io ">
                 <div class="in ">
                     <p>in</p>
                     <div class="out-container outline">
@@ -187,34 +187,39 @@
             </div>
             <div class="proc border">
                 <div class="proc-code border">
-                    1
+                    <pre class="line-counter "></pre>
+                    <textarea id="story" name="story" placeholder="code here"></textarea>
                 </div>
                 <div class="proc-status  grid-container">
                     <div class="grid-item border">
-                        <span>acc</span> <span id="data">35</span>
+                        <span>acc</span> <span id="data">0</span>
                     </div>
                     <div class="grid-item border">
-                        <span>acc</span> <span id="data">35</span>
+                        <span>clk</span> <span id="data">0</span>
                     </div>
                     <div class="grid-item border">
-                        <span>acc</span> <span id="data">35</span>
+                        <span>agp</span> <span id="data">0</span>
                     </div>
                     <div class="grid-item border">
-                        <span>acc</span> <span id="data">35</span>
+                        <span>asr</span> <span id="data">0</span>
                     </div>
                     <div class="grid-item border">
-                        <span>acc</span> <span id="data">35</span>
+                        <span>bgp</span> <span id="data">0</span>
                     </div>
                     <div class="grid-item border">
-                        <span>acc</span> <span id="data">35</span>
+                        <span>bsr</span> <span id="data">0</span>
                     </div>
                     <div class="grid-item border">
-                        <span>acc</span> <span id="data">35</span>
+                        <span>cgp</span> <span id="data">0</span>
                     </div>
                     <div class="grid-item border">
-                        <span>acc</span> <span id="data">35</span>
+                        <span>csr</span> <span id="data">0</span>
+                    </div>
+                    <div class="grid-item border">
+                        <span>status</span> <span id="data">ready</span>
                     </div>
                 </div>
+
 
             </div>
             <div class="out">
@@ -231,6 +236,8 @@
     <script src="scripts/font.js"></script>
     <script src="scripts/menu.js"></script>
     <script src="scripts/proc.js"></script>
+    <script src="scripts/codeFormatter.js"></script>
+    <script src="scripts/codeChecker.js"></script>
 </body>
 
 

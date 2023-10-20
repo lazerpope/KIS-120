@@ -15,48 +15,90 @@
 .main .in {
     display: flex;
     align-items: center;
-    gap: 15px;
+    gap: 1rem;
 }
 
-.main .in  span{
-    font-size: 1.3rem;    
+.main .in span {
+    font-size: 1.3rem;
 }
 
 /* -------------------------------------------- .proc */
 .main .proc {
-   width: 70%;
-   height: 70%;
-   padding: 1px;
-   display: flex;
+    width: 70%;
+    height: 70%;
+    padding: 1px;
+    display: flex;
+    
 }
 
-.main .proc .proc-code{
-flex-grow: 7;
-height: 100%;
-}
-
-/* -------------------------------------------- .proc status */
-.main .proc .proc-status{
-    width: fit-content;
-    margin-left: 1px;
-    height: 100%;
+.main .proc .proc-code .line-counter {
+    padding: 0 1rem 0 2px;   
+    flex-grow: 1;    
+    font-size: 1.4rem;
+    color: var(--darker-font);
+    text-align: right;
+    font-family: inherit;  
    
 }
 
-.main .proc .proc-status span{
-    font-size: 18px;
+.main .proc .proc-code .line-counter span {
+    font-size: inherit;
+    font-family: inherit;   
+}
+
+
+
+
+.main .proc .proc-code {    
+    flex-grow: 4;
+    height: 100%;
+    padding: 0.7rem 1rem 3.5rem 1rem;
+    padding-left: 0.1rem;
+    display: flex;
+    overflow-y:auto;
+}
+
+.main .proc .proc-code textarea {
+    position: sticky;
+    text-align: left;
+    flex-grow: 14;
+    font-family: inherit;   
+    resize: none;
+    border: none;
+    font-size: 1.4rem;    
+    outline: none;
+    overflow: hidden;
+}
+
+
+.main .proc .proc-code textarea::placeholder {
+    color: var(--font);
+
+}
+
+
+
+
+/* -------------------------------------------- .proc status */
+.main .proc .proc-status {
+    margin-left: 1px;
+    height: fit-content;
+}
+
+.main .proc .proc-status span {
+    font-size: 1.4rem;
 }
 
 .proc .grid-container {
-      
+
     display: grid;
-    grid-template-columns: repeat(2, 1fr);     
-    gap: 1px;      
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1px;
 }
 
-.proc-status .grid-item {    
+.proc-status .grid-item {
     aspect-ratio: 1;
-    width: 100px;
+    width: 6rem;
     text-align: center;
     display: flex;
     align-items: center;
@@ -65,14 +107,25 @@ height: 100%;
     gap: 8px;
 }
 
+
+.proc .proc-status div span:nth-child(1) {
+    color: var(--darker-font);
+}
+
 /* -------------------------------------------- .out */
 .main .out {
     display: flex;
     align-items: center;
-    gap: 15px;
-    
+    gap: 1rem;
+
 }
 
-.main .out  span{
-    font-size: 1.3rem;    
+.main .out span {
+    font-size: 1.3rem;
+}
+
+
+.error{
+    background-color: var(--error);
+    padding-left: 2px;
 }

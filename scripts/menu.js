@@ -18,7 +18,6 @@ function openMenu() {
 
 // Function to close the menu when clicking outside
 function closeMenuOnClickOutside(event) {
-    console.log(event);
     if (!menu.contains(event.target)) {
         isMenuOpened = false
         menuButton.innerHTML = 'menu'
