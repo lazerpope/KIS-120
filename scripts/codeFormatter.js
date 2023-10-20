@@ -1,5 +1,5 @@
-let codeSpace = document.querySelector('.main .proc .proc-code textarea')
-let codeCounter = document.querySelector('.main .proc .line-counter')
+const codeSpace = document.querySelector('.main .proc .proc-code textarea')
+const codeCounter = document.querySelector('.main .proc .line-counter')
 
 codeSpace.style.height  = (codeSpace.scrollHeight) + "px;overflow-y:hidden;"
 
@@ -17,20 +17,23 @@ codeSpace.addEventListener('input', () => {
         let isLineWithNoErrors = true
         for (let j = 0; j < line.length; j++) {
             let hasUnresolvedWords = allowedWords.indexOf(line[j].toLowerCase() ) == -1
-            let lineIsNotEmpty = line[j] != ''            
-            if (hasUnresolvedWords  &&  lineIsNotEmpty) {
+            let lineIsNotEmpty = line[j] != ''  
+            let isLineNumber = /^-?[0-9]+$/.test(line[j])  
+            if (hasUnresolvedWords  &&  lineIsNotEmpty && !isLineNumber) {
                 isLineWithNoErrors = false
                 break
+
             }            
         }  
-        if (isLineWithNoErrors) {
-            
+        if (isLineWithNoErrors) {            
             out +=  i + '\n'
+
         }
         else{
-
             out += '<span class="error">'+ i + '</span>\n'
+
         }
+
     }
     codeCounter.innerHTML = out
 

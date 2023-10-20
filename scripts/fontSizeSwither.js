@@ -1,4 +1,4 @@
-let fontSwitch = document.querySelector('.menu .font-switch')
+const fontSwitch = document.querySelector('.menu .font-switch')
 
 let fontList = [
     {

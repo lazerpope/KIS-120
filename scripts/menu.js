@@ -1,6 +1,6 @@
-let menu = document.querySelector('.menu')
-let menuButton = menu.querySelector('span')
-let ulElement = menu.querySelector('ul')
+const menu = document.querySelector('.menu')
+const menuButton = menu.querySelector('span')
+const ulElement = menu.querySelector('ul')
 let isMenuOpened = false
 
 function openMenu() {

@@ -49,7 +49,8 @@
                 Нормальный шрифт: выкл
             </li>
             <li>
-                Инструкция
+                <a href="https://docs.google.com/document/d/1WSbrpUKnYhpWxNMSAGILUYvD_4ld__AyxZRqn_Nv46g/edit?usp=sharing"
+                    target="_blank">Инструкция</a>
             </li>
             <li class="font-switch">
                 Шрифт: Стандарт
@@ -151,25 +152,25 @@
                 </div>
             </div>
             <div class="controls">
-                <div class="button ">
+                <div class="button " id="stop">
                     <span class="material-symbols-outlined">
                         square
                     </span>
                     STOP
                 </div>
-                <div class="button">
+                <div class="button" id="step">
                     <span class="material-symbols-outlined">
                         skip_next
                     </span>
                     STEP
                 </div>
-                <div class="button">
+                <div class="button" id="play">
                     <span class="material-symbols-outlined">
                         play_arrow
                     </span>
                     PLAY
                 </div>
-                <div class="button">
+                <div class="button" id="fast">
                     <span class="material-symbols-outlined">
                         fast_forward
                     </span>
@@ -180,7 +181,7 @@
         <div class="main">
             <div class="in">
                 <span>in</span>
-                <span id="number">56</span>
+                <span id="number">null</span>
                 <span class="material-symbols-outlined">
                     keyboard_double_arrow_down
                 </span>
@@ -191,32 +192,44 @@
                     <textarea id="story" name="story" placeholder="code here"></textarea>
                 </div>
                 <div class="proc-status  grid-container">
-                    <div class="grid-item border">
-                        <span>acc</span> <span id="data">0</span>
+                    <div class="grid-item border " id="acc">
+                        <span>acc</span>
+                        <span id="data">null</span>
                     </div>
-                    <div class="grid-item border">
-                        <span>clk</span> <span id="data">0</span>
+                    <div class="grid-item border" id="clk">
+                        <span>clk</span>
+                        <span id="data">null</span>
                     </div>
-                    <div class="grid-item border">
-                        <span>agp</span> <span id="data">0</span>
+                    <div class="grid-item border" id="agp">
+                        <span>agp</span>
+                        <span class="material-symbols-outlined middle-arrow"> arrows_outward </span>
+                        <span id="data">null</span>
                     </div>
-                    <div class="grid-item border">
-                        <span>asr</span> <span id="data">0</span>
+                    <div class="grid-item border" id="asr">
+                        <span>asr</span>
+                        <span id="data">null</span>
                     </div>
-                    <div class="grid-item border">
-                        <span>bgp</span> <span id="data">0</span>
+                    <div class="grid-item border" id="bgp">
+                        <span>bgp</span>
+                        <span class="material-symbols-outlined middle-arrow"> arrows_outward </span>
+                        <span id="data">null</span>
                     </div>
-                    <div class="grid-item border">
-                        <span>bsr</span> <span id="data">0</span>
+                    <div class="grid-item border" id="bsr">
+                        <span>bsr</span>
+                        <span id="data">null</span>
                     </div>
-                    <div class="grid-item border">
-                        <span>cgp</span> <span id="data">0</span>
+                    <div class="grid-item border" id="cgp">
+                        <span>cgp</span>
+                        <span class="material-symbols-outlined middle-arrow"> arrows_outward </span>
+                        <span id="data">null</span>
                     </div>
-                    <div class="grid-item border">
-                        <span>csr</span> <span id="data">0</span>
+                    <div class="grid-item border" id="csr">
+                        <span>csr</span>
+                        <span id="data">null</span>
                     </div>
-                    <div class="grid-item border">
-                        <span>status</span> <span id="data">ready</span>
+                    <div class="grid-item border" id="status">
+                        <span>status</span>
+                        <span id="data">null</span>
                     </div>
                 </div>
 
@@ -224,7 +237,7 @@
             </div>
             <div class="out">
                 <span>out</span>
-                <span id="number">44</span>
+                <span id="number">null</span>
                 <span class="material-symbols-outlined">
                     keyboard_double_arrow_down
                 </span>
@@ -235,10 +248,11 @@
 
     <script src="scripts/font.js"></script>
     <script src="scripts/menu.js"></script>
-    <script src="scripts/proc.js"></script>
     <script src="scripts/codeFormatter.js"></script>
-    <script src="scripts/codeChecker.js"></script>
     <script src="scripts/fontSizeSwither.js"></script>
+    <script src="scripts/procState.js"></script>
+    <script src="scripts/procDisplay.js"></script>
+    <script src="scripts/controls.js"></script>
 </body>
 
 
