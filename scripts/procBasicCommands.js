@@ -1,3 +1,6 @@
+const readList = ['acc', 'clk', 'agp', 'bgp', 'cgp', 'in']
+const writeList = ['acc', 'agp', 'bgp', 'cgp', 'out']
+
 class BasicCommands {
     mov(line) {
         if (line.length > 3)
@@ -5,45 +8,17 @@ class BasicCommands {
         let src = line[1]
         let dst = line[2]
 
-        let srcValue;
 
-        const readList = ['acc', 'clk', 'agp', 'bgp', 'cgp', 'in']
         if (!readList.includes(src) && isNaN(src))
             return true
 
 
-        const writeList = ['acc', 'agp', 'bgp', 'cgp', 'out']
         if (!writeList.includes(dst))
             return true
 
-        if (!readList.includes(src)) {
-            srcValue = +src
-        }
-        else {
-            switch (src) {
-                case 'acc':
-                    srcValue = procState.registers.acc
-                    break;
-                case 'clk':
-                    srcValue = procState.registers.counter
-                    break;
-                case 'agp':
-                    srcValue = procState.registers.generalPurpose.a
-                    break;
-                case 'bgp':
-                    srcValue = procState.registers.generalPurpose.b
-                    break;
-                case 'cgp':
-                    srcValue = procState.registers.generalPurpose.c
-                    break;
-                case 'in':
-                    srcValue = procState.io.in
-                    break;
-                default:
-                    return true
-            }
-
-        }
+        let srcValue = findSrcValue(src)
+        if (srcValue === null)
+            return true
 
         switch (dst) {
             case 'acc':
@@ -59,7 +34,7 @@ class BasicCommands {
                 procState.registers.generalPurpose.c = srcValue
                 break;
             case 'out':
-                procState.io.out = srcValue
+                procState.registers.io.out = srcValue
                 break;
             default:
                 return true
@@ -69,17 +44,81 @@ class BasicCommands {
 
     }
     swp(line) {
-
+        
     }
     add(line) {
+        if (line.length > 2)
+            return true
+        let src = line[1]
+
+
+        const readList = ['acc', 'clk', 'agp', 'bgp', 'cgp', 'in']
+        if (!readList.includes(src) && isNaN(src))
+            return true
+
+        let srcValue = findSrcValue(src)
+        if (srcValue == null)
+            return true
+
+        procState.registers.acc += srcValue
 
     }
     sub(line) {
+        if (line.length > 2)
+            return true
+        let src = line[1]
 
+
+        const readList = ['acc', 'clk', 'agp', 'bgp', 'cgp', 'in']
+        if (!readList.includes(src) && isNaN(src))
+            return true
+
+        let srcValue = findSrcValue(src)
+        if (srcValue == null)
+            return true
+
+        procState.registers.acc -= srcValue
     }
     neg(line) {
-
+        if (line.length > 1)
+            return true
+        procState.registers.acc = procState.registers.acc*-1
     }
 }
 
 const basicCommands = new BasicCommands()
+
+
+
+function findSrcValue(src) {
+
+    if (!readList.includes(src)) {
+        return +src
+    }
+    else {
+        switch (src) {
+            case 'acc':
+                return procState.registers.acc
+                break;
+            case 'clk':
+                return procState.registers.counter
+                break;
+            case 'agp':
+                return procState.registers.generalPurpose.a
+                break;
+            case 'bgp':
+                return procState.registers.generalPurpose.b
+                break;
+            case 'cgp':
+                return procState.registers.generalPurpose.c
+                break;
+            case 'in':
+                return procState.registers.io.in
+                break;
+            default:
+                return null
+        }
+
+    }
+
+}

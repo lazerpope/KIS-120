@@ -5,7 +5,7 @@ class Execution {
         this.codeList = codeList.toLowerCase().split('\n')
     }
 
-    step(running=false) {
+    step(running = false) {
         if (this.codeList.length <= this.lineIndex) {
             console.log('no next line');
             return
@@ -16,8 +16,8 @@ class Execution {
 
         let line = this.codeList[this.lineIndex].split(/\s+/)
 
-        if (line.length>3) {
-            procState.status = procStatus.ERROR 
+        if (line.length > 3) {
+            procState.status = procStatus.ERROR
             procDisplay.update()
             return
         }
@@ -25,26 +25,27 @@ class Execution {
         let errorOccured = false
         switch (line[0].toLowerCase()) {
             case 'mov':
+                console.log('mov');
                 errorOccured = basicCommands.mov(line)
                 break;
             case 'swp':
                 console.log('swp' + line);
                 break;
             case 'add':
-                console.log('add' + line);
+                errorOccured = basicCommands.add(line)
                 break;
             case 'sub':
-                console.log('sub' + line);
+                errorOccured = basicCommands.sub(line)
                 break;
             case 'neg':
-                console.log('neg' + line);
+                errorOccured = basicCommands.neg(line)
                 break;
             default:
                 errorOccured = true
         }
 
         if (errorOccured) {
-            procState.status = procStatus.ERROR 
+            procState.status = procStatus.ERROR
             procDisplay.update()
             return
         }
@@ -73,11 +74,13 @@ function stepExecutor() {
 
 function playExecutor() {
     executor = new Execution(codeSpace.value)
+    procState.status = procStatus.READY
+    procDisplay.update()
     executor.step(true)
 }
 
 function fastPlayExecutor() {
-   alert('not implemented');
+    alert('not implemented');
 
 }
 
