@@ -4,7 +4,7 @@ const codeCounter = document.querySelector('.main .proc .line-counter')
 codeSpace.style.height  = (codeSpace.scrollHeight) + "px;overflow-y:hidden;"
 
 let commands = ['mov', 'add', 'sub',]
-let registers = ['acc','clk', 'agp', 'asr', 'bgp','bsr','cgp','csr','in','out' , 'NEG']
+let registers = ['acc','clk', 'agp', 'asr', 'bgp','bsr','cgp','csr','in','out' , 'neg']
 
 let allowedWords = commands + registers
 
