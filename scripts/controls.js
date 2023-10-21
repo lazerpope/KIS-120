@@ -1,20 +1,19 @@
 const controlsElement = document.querySelector('.left .controls');
 
 controlsElement.querySelector('#stop').addEventListener('click',(e) => {
-    console.log('stop');
+    renewExecutor()
 });
 
 controlsElement.querySelector('#step').addEventListener('click',(e) => {
-    console.log('step');
+    stepExecutor()
 });
 
 controlsElement.querySelector('#play').addEventListener('click',(e) => {
-    console.log('play');
+    playExecutor()
 })
 
 controlsElement.querySelector('#fast').addEventListener('click',(e) => {
-  procDisplay.update()
-//   console.log(procDisplay);
+    fastPlayExecutor() 
 })
 
 procDisplay.update()

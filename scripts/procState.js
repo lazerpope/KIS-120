@@ -1,34 +1,37 @@
 const procStatus = {
     READY: 'ready',
     RUNNING: 'running',
-    ERROR: 'error',
+    ERROR: '<span class="error">error</span>',
 
 }
 
-const procState = {
-    ioQueue: {
-        in : [],
-        out : [],
-    },
-    registers: {
+class State{
+    constructor() {
+      this.ioQueue = {
+        in: [],
+        out: [],
+      };
+      this.registers = {
         acc: 0,
         io: {
-            in : 0,
-            out: 0,
+          in: 0,
+          out: 0,
         },
         generalPurpose: {
-            a: 0,
-            b: 0,
-            c: 0,
+          a: 0,
+          b: 0,
+          c: 0,
         },
-        swap:  {
-            a: 0,
-            b: 0,
-            c: 0,
+        swap: {
+          a: 0,
+          b: 0,
+          c: 0,
         },
         counter: 0,
+      };
+      this.status = procStatus.READY; // Assuming procStatus is defined elsewhere
+    }
+  }
+  
 
-    },
-    status: procStatus.READY,
-
-};
+let procState = new State()
