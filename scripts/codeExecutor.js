@@ -1,20 +1,46 @@
+const delayStandarts = {
+    STANDART: 500,
+    FAST: 5
+}
+
 class Execution {
-    constructor(codeList) {
+    constructor(codeList = '') {
         this.running = false
         this.lineIndex = 0
-        this.codeList = codeList.toLowerCase().split('\n')
+        this.delayMs = 500
+        this.running = false
+        this.oneTime = false
+        this._codeList
     }
 
-    step(running = false) {
-        if (this.codeList.length <= this.lineIndex) {
-            console.log('no next line');
+    set codeList(codeList) {
+        this._codeList = codeList.toLowerCase().split('\n')
+    }
+
+    get codeList() {
+        return this._codeList
+    }
+
+    step() {
+
+        if (!this.running && !this.oneTime) {
             return
         }
 
-        console.log(this.lineIndex);
-        console.log(this.codeList);
+        this.oneTime = false
+
+
+        if (this.codeList.length <= this.lineIndex) {
+            try {
+                codeCounter.querySelectorAll('span')[this.lineIndex - 1].classList.remove('current-line')
+            }
+            catch { }
+            this.lineIndex = 0
+        }
 
         let line = this.codeList[this.lineIndex].split(/\s+/)
+
+        console.log(this.lineIndex + ': ' + line);
 
         if (line.length > 3) {
             procState.status = procStatus.ERROR
@@ -29,7 +55,7 @@ class Execution {
                 errorOccured = basicCommands.mov(line)
                 break;
             case 'swp':
-                console.log('swp' + line);
+                errorOccured = basicCommands.swp(line)
                 break;
             case 'add':
                 errorOccured = basicCommands.add(line)
@@ -50,17 +76,36 @@ class Execution {
             return
         }
 
-        procDisplay.update()
+        try {
+            codeCounter.querySelectorAll('span')[this.lineIndex - 1].classList.remove('current-line')
+        }
+        catch { }
         this.lineIndex++
+        try {
+            codeCounter.querySelectorAll('span')[this.lineIndex - 1].classList.add('current-line')
+        } catch { }
+
+        procDisplay.update()
+
+
+
+        if (this.running) {
+            setTimeout(this.step.bind(this), this.delayMs)
+        }
+
     }
 
 }
 
 
 
-let executor = new Execution('')
+let executor = new Execution()
 
 function renewExecutor() {
+
+    codeCounter.querySelectorAll('span').forEach((element) => element.classList.remove('current-line'))
+
+    executor.running = false
     executor = new Execution(codeSpace.value)
     procState = new State()
     procDisplay.update()
@@ -68,20 +113,53 @@ function renewExecutor() {
 
 
 function stepExecutor() {
-    alert('not implemented');
+    executor.codeList = codeSpace.value
+    executor.running = false
+    executor.oneTime = true
+    procState.status = procStatus.RUNNING
+    procDisplay.update()
+    executor.step()
 
 }
 
 function playExecutor() {
-    executor = new Execution(codeSpace.value)
-    procState.status = procStatus.READY
+    codeCounter.querySelectorAll('span').forEach((element) => element.classList.remove('current-line'))
+
+    if (procState.status == procStatus.RUNNING)
+        {
+            executor.running = true
+            executor.delayMs = delayStandarts.STANDART
+            procDisplay.update()
+            executor.step()
+            return
+        }
+    executor = new Execution()
+    executor.codeList = codeSpace.value
+    executor.running = true
+    executor.delayMs = delayStandarts.STANDART
+    procState.status = procStatus.RUNNING
     procDisplay.update()
-    executor.step(true)
+    executor.step()
 }
 
 function fastPlayExecutor() {
-    alert('not implemented');
+    codeCounter.querySelectorAll('span').forEach((element) => element.classList.remove('current-line'))
 
+    if (procState.status == procStatus.RUNNING)
+        {
+            executor.running = true
+            executor.delayMs = delayStandarts.FAST
+            procDisplay.update()
+            executor.step()
+            return
+        }
+    executor = new Execution()
+    executor.codeList = codeSpace.value
+    executor.running = true
+    executor.delayMs = delayStandarts.FAST
+    procState.status = procStatus.RUNNING
+    procDisplay.update()
+    executor.step()
 }
 
 

@@ -3,8 +3,8 @@ const codeCounter = document.querySelector('.main .proc .line-counter')
 
 codeSpace.style.height  = (codeSpace.scrollHeight) + "px;overflow-y:hidden;"
 
-let commands = ['mov', 'add', 'sub',]
-let registers = ['acc','clk', 'agp', 'asr', 'bgp','bsr','cgp','csr','in','out' , 'neg']
+let commands = ['mov', 'add', 'sub','neg', 'swp']
+let registers = ['acc','clk', 'agp', 'asr', 'bgp','bsr','cgp','csr','in','out' , ]
 
 let allowedWords = commands + registers
 
@@ -26,9 +26,10 @@ codeSpace.addEventListener('input', () => {
             }            
         }  
         if (isLineWithNoErrors) {            
-            out +=  i + '\n'
+            out +=  '<span>'+ i + '</span>\n'
 
         }
+        
         else{
             out += '<span class="error">'+ i + '</span>\n'
 

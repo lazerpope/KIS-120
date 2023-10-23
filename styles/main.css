@@ -46,6 +46,9 @@
     font-family: inherit;
 }
 
+.main .proc .line-counter .current-line::before{
+    content: '>';
+}
 
 
 
@@ -136,4 +139,9 @@
 .error {
     background-color: var(--error);
     padding-left: 2px;
+}
+
+
+.highlighted {
+    background-color: var(--darker-font) !important;   
 }

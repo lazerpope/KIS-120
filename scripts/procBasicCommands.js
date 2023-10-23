@@ -12,12 +12,14 @@ class BasicCommands {
         if (!readList.includes(src) && isNaN(src))
             return true
 
-
         if (!writeList.includes(dst))
             return true
 
         let srcValue = findSrcValue(src)
         if (srcValue === null)
+            return true
+
+        if (srcValue > 999 || srcValue < - 999)
             return true
 
         switch (dst) {
@@ -44,7 +46,35 @@ class BasicCommands {
 
     }
     swp(line) {
-        
+        if (line.length > 2)
+            return true
+        let src = line[1]
+
+        if (!readList.includes(src))
+            return true
+
+        let x;
+        switch (src) {
+            case 'agp':
+                x = procState.registers.swap.a
+                procState.registers.swap.a = procState.registers.generalPurpose.a
+                procState.registers.generalPurpose.a = x
+                break;
+            case 'bgp':
+                x = procState.registers.swap.b
+                procState.registers.swap.b = procState.registers.generalPurpose.b
+                procState.registers.generalPurpose.b = x
+                break;
+            case 'cgp':
+                x = procState.registers.swap.c
+                procState.registers.swap.c = procState.registers.generalPurpose.c
+                procState.registers.generalPurpose.c = x
+                break;
+            default:
+                return true
+        }
+
+
     }
     add(line) {
         if (line.length > 2)
@@ -62,6 +92,10 @@ class BasicCommands {
 
         procState.registers.acc += srcValue
 
+        if (procState.registers.acc > 999 || procState.registers.acc < - 999)
+            return true
+
+
     }
     sub(line) {
         if (line.length > 2)
@@ -78,11 +112,13 @@ class BasicCommands {
             return true
 
         procState.registers.acc -= srcValue
+        if (procState.registers.acc > 999 || procState.registers.acc < - 999)
+            return true
     }
     neg(line) {
         if (line.length > 1)
             return true
-        procState.registers.acc = procState.registers.acc*-1
+        procState.registers.acc = procState.registers.acc * -1
     }
 }
 

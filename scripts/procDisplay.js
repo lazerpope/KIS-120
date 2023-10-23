@@ -25,6 +25,7 @@ let procDisplay = {
 
     },
     status: procElement.querySelector('.proc-status #status #data'),
+    currentLine : 0,
 
     update : () => {   
                        
@@ -44,7 +45,6 @@ let procDisplay = {
         procDisplay.registers.counter.innerHTML = procState.registers.counter
         
         procDisplay.status.innerHTML = procState.status
-
     },
 
 };

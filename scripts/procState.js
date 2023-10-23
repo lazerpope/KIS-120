@@ -1,6 +1,7 @@
 const procStatus = {
     READY: 'ready',
     RUNNING: 'running',
+    DONE: 'DONE',
     ERROR: '<span class="error">error</span>',
 
 }
@@ -30,6 +31,7 @@ class State{
         counter: 0,
       };
       this.status = procStatus.READY; // Assuming procStatus is defined elsewhere
+      this.currentLine = 0
     }
   }
   
