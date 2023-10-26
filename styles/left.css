@@ -107,3 +107,8 @@
     -moz-box-shadow: 4px 4px 0px 0px var(--darker-font);
     box-shadow: 4px 4px 0px 0px var(--darker-font);
 }
+
+
+.left #step.off{
+    opacity: 0.3;
+}

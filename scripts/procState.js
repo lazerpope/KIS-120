@@ -1,7 +1,7 @@
 const procStatus = {
     READY: 'ready',
     RUNNING: 'running',
-    DONE: 'DONE',
+    DEBUG: 'DEBUG',
     ERROR: '<span class="error">error</span>',
 
 }

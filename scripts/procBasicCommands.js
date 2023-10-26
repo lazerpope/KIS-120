@@ -125,7 +125,6 @@ class BasicCommands {
 const basicCommands = new BasicCommands()
 
 
-
 function findSrcValue(src) {
 
     if (!readList.includes(src)) {
