@@ -90,10 +90,10 @@ class BasicCommands {
         if (srcValue == null)
             return true
 
+        
+        if (procState.registers.acc + srcValue > 999 || procState.registers.acc + srcValue < - 999)
+        return true
         procState.registers.acc += srcValue
-
-        if (procState.registers.acc > 999 || procState.registers.acc < - 999)
-            return true
 
 
     }
